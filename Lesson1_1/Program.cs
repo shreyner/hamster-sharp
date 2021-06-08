@@ -45,40 +45,28 @@ namespace Lesson1_1
 
         static int readNumber(string message)
         {
-            while (true)
+            int parsedNumber;
+
+            Console.Write(message);
+            while (!int.TryParse(Console.ReadLine(), out parsedNumber))
             {
-                try
-                {
-                    Console.Write(message);
-                    return int.Parse(Console.ReadLine());
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Введите целое число");
-                }
+                Console.WriteLine("Введите целое число");
+                Console.Write(message);
             }
+
+            return parsedNumber;
         }
 
         static int readA(string message)
         {
-            while (true)
+            int a;
+
+            while ((a = readNumber(message)) == 0)
             {
-                try
-                {
-                    var a = readNumber(message);
-
-                    if (a == 0)
-                    {
-                        throw new Exception();
-                    }
-
-                    return a;
-                }
-                catch
-                {
-                    Console.WriteLine("Введите целое число не равное 0");
-                }
+                Console.WriteLine("Введите целое число не равное 0");
             }
+
+            return a;
         }
     }
 }
