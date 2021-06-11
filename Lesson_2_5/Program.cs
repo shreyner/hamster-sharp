@@ -1,38 +1,59 @@
 ﻿using System;
+using System.Linq;
 
 namespace Lesson_2_5
 {
     class Program
     {
+        enum Month
+        {
+            January = 1,
+            February,
+            March,
+            April,
+            May,
+            June,
+            July,
+            August,
+            September,
+            October,
+            November,
+            December
+        }
+
+        static bool IsWinter(Month month)
+        {
+            return month is Month.December or Month.January or Month.February;
+        }
+
         static void Main(string[] args)
         {
-            var monthNumber = ConsoleReadMonth();
-            var averageDeg = ConsoleReadNumber("Введите среднюю температуру за месяц: ");
+            Month monthNumber = ConsoleReadMonth();
+            var avgDeg = GetAverageDeg();
 
-            var monthName = GetMothByNumber(monthNumber);
 
-            Console.WriteLine($"Месяц: {monthName}, Средняя температура: {averageDeg}");
+            Console.WriteLine($"Месяц: {GetMothByNumber((int) monthNumber)}, Средняя температура: {avgDeg}");
 
-            if (monthNumber >= 12 || monthNumber <= 2)
+            Console.WriteLine($"Средняя температура за день: {avgDeg}");
+
+            if (IsWinter(monthNumber) && avgDeg > 0)
             {
-                Console.WriteLine(monthNumber > 0 ? "Теплая зима" : "Нормальная зима");
+                Console.WriteLine("Теплая зима");
             }
         }
 
-        static int ConsoleReadMonth()
+        static Month ConsoleReadMonth()
         {
-            int monthNumber;
             while (true)
             {
-                monthNumber = ConsoleReadNumber("Введите номер месяца от 1 до 12: ");
+                var monthNumber = ConsoleReadNumber("Введите номер месяца от 1 до 12: ");
 
                 if (monthNumber is >= 1 and <= 12)
                 {
-                    break;
+                    Month month = (Month) monthNumber;
+                    return month;
                 }
             }
-
-            return monthNumber;
         }
 
         static int ConsoleReadNumber(string message)
@@ -47,6 +68,20 @@ namespace Lesson_2_5
             return parsedNumber;
         }
 
+        static int GetAverageDeg()
+        {
+            var minDeg = ConsoleReadNumber("Введите минимальную температуру за день: ");
+            var maxDeg = ConsoleReadNumber("Введите максимальную температуру за день: ");
+
+            var avgDeg = CalcAverage(minDeg, maxDeg);
+
+            return avgDeg;
+        }
+
+        static int CalcAverage(params int[] numbers)
+        {
+            return numbers.Sum() / numbers.Length;
+        }
 
         static string GetMothByNumber(int monthNumber)
         {
