@@ -34,8 +34,6 @@ namespace Lesson_2_5
 
             Console.WriteLine($"Месяц: {GetMothByNumber((int) monthNumber)}, Средняя температура: {avgDeg}");
 
-            Console.WriteLine($"Средняя температура за день: {avgDeg}");
-
             if (IsWinter(monthNumber) && avgDeg > 0)
             {
                 Console.WriteLine("Теплая зима");
