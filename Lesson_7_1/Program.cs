@@ -9,7 +9,6 @@ namespace Lesson_7_1
             var secret = "some secret password";
             Console.WriteLine("Enter password:");
             var input = Console.ReadLine();
-            Console.WriteLine("After decompile");
             if (input == secret)
             {
                 Console.WriteLine("Welcome!");
