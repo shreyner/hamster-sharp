@@ -17,23 +17,17 @@ namespace ADLesson_4_2
             tree.AddItem(6);
             tree.GetRoot();
 
-            Console.WriteLine("Hello world");
+            Console.WriteLine(TreeHelper.GetTreeInLine(tree));
             
-            // tree.RemoveItem(70);
-            // tree.GetRoot();
+            tree.RemoveItem(70);
+            tree.GetRoot();
 
-            Console.WriteLine("Hello world");
+            Console.WriteLine(TreeHelper.GetTreeInLine(tree));
 
             var node = tree.GetNodeByValue(51);
             tree.GetRoot();
             
-            Console.WriteLine("Hello world");
-            
-            var treeArray = TreeHelper.GetTreeInLine(tree);
-            
-            Console.WriteLine("Hello world");
-            
-            tree.PrintTree();
+            Console.WriteLine(node);
         }
     }
 }
