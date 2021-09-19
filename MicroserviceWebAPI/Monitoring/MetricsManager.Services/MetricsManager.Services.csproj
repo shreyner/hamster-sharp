@@ -6,9 +6,16 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Dto" />
-      <Folder Include="Mapper" />
       <Folder Include="Validator" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="10.1.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\MetricsManager.DB\MetricsManager.DB.csproj" />
+      <ProjectReference Include="..\MetricsManager.Entities\MetricsManager.Entities.csproj" />
     </ItemGroup>
 
 </Project>

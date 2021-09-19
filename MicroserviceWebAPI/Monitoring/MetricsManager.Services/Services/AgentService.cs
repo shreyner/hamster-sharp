@@ -2,30 +2,38 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using MetricsManager.DB;
+using MetricsManager.Entities;
+using MetricsManager.Service.Dto;
+using MetricsManager.Service.Mapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace MetricsManager.Service.Services
 {
     public class AgentService
     {
-        private readonly List<AgentInfo> _listAgents = new List<AgentInfo>();
-        private int _lastIndex = 0;
+        private DbRepository<Agent> AgentRepository { get; set; }
+        private IMetricsManagerMapper ManagerMapper { get; set; }
 
-        public AgentService()
+        public AgentService(DbRepository<Agent> agentRepository, IMetricsManagerMapper mapper)
         {
-            _listAgents.AddRange(
-                Enumerable
-                    .Range(1, 5)
-                    .Select((_) =>
-                    {
-                        var index = _lastIndex++;
-                        return new AgentInfo
-                            { id = index, Address = new Uri($"http://localhost:300{index}") };
-                    }));
+            AgentRepository = agentRepository;
+            ManagerMapper = mapper;
         }
 
-        public List<AgentInfo> GetAllAgents()
+        public Task<List<Agent>> GetAll()
         {
-            return _listAgents;
+            return AgentRepository.GetAll().ToListAsync();
+        }
+
+        public async Task<Agent> AddAgent(AgentAddDto agentAddDto)
+        {
+            var agent = ManagerMapper.Map<Agent>(agentAddDto);
+
+            await AgentRepository.AddAsync(agent);
+
+            return agent;
         }
     }
 }
