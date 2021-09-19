@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MetricsManager.Entities;
 using MetricsManager.Service;
+using MetricsManager.Service.Dto;
 using MetricsManager.Service.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,15 +16,18 @@ namespace MetricsManager.Application.Controllers
     public class AgentsController : ControllerBase
     {
         [HttpGet]
-        public ActionResult<IEnumerable<AgentInfo>> GetAllAgents([FromServices] AgentService agentService)
+        public async Task<ActionResult<List<Action>>> GetAllAgents([FromServices] AgentService agentService)
         {
-            return Ok(agentService.GetAllAgents());
+            return Ok(await agentService.GetAll());
         }
 
         [HttpPost("registry")]
-        public ActionResult RegistryAgent()
+        public async Task<ActionResult<Agent>> RegistryAgent(
+            [FromBody] AgentAddDto newAgent,
+            [FromServices] AgentService agentService
+        )
         {
-            return BadRequest();
+            return Ok(await agentService.AddAgent(newAgent));
         }
 
         [HttpPut("{agentId}/enabled")]
@@ -36,6 +41,5 @@ namespace MetricsManager.Application.Controllers
         {
             return NoContent();
         }
-        
     }
 }

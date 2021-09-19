@@ -1,4 +1,4 @@
-namespace MetricsManager.DB
+namespace MetricsManager.Entities
 {
     public abstract class BaseEntity
     {
