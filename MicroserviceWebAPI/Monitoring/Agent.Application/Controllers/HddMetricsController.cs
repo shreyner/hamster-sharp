@@ -16,14 +16,14 @@ namespace Agent.Application.Controllers
     public class HddMetricsController : ControllerBase
     {
         [HttpGet("left/from/{fromTime}/to/{toTime}")]
-        public ActionResult<IList<HddMetric>> GetLeftMetrics(
+        public async Task<ActionResult<IList<HddMetric>>> GetLeftMetrics(
             [FromRoute] DateTime fromTime,
             [FromRoute] DateTime toTime,
             [FromServices] DbRepository<HddMetric> hddMetricRepository
         )
         {
             return Ok(
-                hddMetricRepository
+                await hddMetricRepository
                     .GetAll()
                     .Where(x => fromTime.CompareTo(x.Time) != -1 && toTime.CompareTo(x.Time) != 1)
                     .ToListAsync()

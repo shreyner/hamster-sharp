@@ -15,14 +15,14 @@ namespace Agent.Application.Controllers
     public class RamMetricsController : ControllerBase
     {
         [HttpGet("available/from/{fromTime}/to/{toTime}")]
-        public ActionResult<IList<RamMetric>> GetAvailableMetrics(
+        public async Task<ActionResult<IList<RamMetric>>> GetAvailableMetrics(
             [FromRoute] DateTime fromTime,
             [FromRoute] DateTime toTime,
             [FromServices] DbRepository<RamMetric> ramMetricRepository
         )
         {
             return Ok(
-                ramMetricRepository
+                await ramMetricRepository
                     .GetAll()
                     .Where(x => fromTime.CompareTo(x.Time) != -1 && toTime.CompareTo(x.Time) != 1)
                     .ToListAsync()

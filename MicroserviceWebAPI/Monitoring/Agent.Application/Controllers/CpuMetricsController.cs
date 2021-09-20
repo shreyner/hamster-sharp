@@ -16,14 +16,14 @@ namespace Agent.Application.Controllers
     public class CpuMetricsController : ControllerBase
     {
         [HttpGet("from/{fromTime}/to/{toTime}")]
-        public ActionResult<IList<CpuMetric>> GetMetrics(
+        public async Task<ActionResult<IList<CpuMetric>>> GetMetrics(
             [FromRoute] DateTime fromTime,
             [FromRoute] DateTime toTime,
             [FromServices] DbRepository<CpuMetric> cpuMetricRepository
         )
         {
             return Ok(
-                cpuMetricRepository
+                await cpuMetricRepository
                     .GetAll()
                     .Where(x => fromTime.CompareTo(x.Time) != -1 && toTime.CompareTo(x.Time) != 1).ToListAsync()
             );

@@ -16,14 +16,14 @@ namespace Agent.Application.Controllers
     public class DotNetMetricsController : ControllerBase
     {
         [HttpGet("error-count/from/{fromTime}/to/{toTime}")]
-        public ActionResult<IList<CpuMetric>> GetErrorCountMetrics(
+        public async Task<ActionResult<IList<CpuMetric>>> GetErrorCountMetrics(
             [FromRoute] DateTime fromTime,
             [FromRoute] DateTime toTime,
             [FromServices] DbRepository<DotNetMetric> dotnetMetricRepository
         )
         {
             return Ok(
-                dotnetMetricRepository
+                await dotnetMetricRepository
                     .GetAll()
                     .Where(x => fromTime.CompareTo(x.Time) != -1 && toTime.CompareTo(x.Time) != 1)
                     .ToListAsync()
