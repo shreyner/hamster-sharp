@@ -25,7 +25,7 @@ namespace Agent.Application.Controllers
             return Ok(
                 await cpuMetricRepository
                     .GetAll()
-                    .Where(x => fromTime.CompareTo(x.Time) != -1 && toTime.CompareTo(x.Time) != 1).ToListAsync()
+                    .Where(x => fromTime.CompareTo(x.Time) == -1 && toTime.CompareTo(x.Time) == 1).ToListAsync()
             );
         }
     }
