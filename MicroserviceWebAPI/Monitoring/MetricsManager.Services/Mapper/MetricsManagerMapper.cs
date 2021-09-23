@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Agent.Client.Dto;
 using AutoMapper;
 using MetricsManager.Entities;
 using MetricsManager.Service.Dto;
@@ -10,7 +12,12 @@ namespace MetricsManager.Service.Mapper
 
         public MetricsManagerMapper()
         {
-            var config = new MapperConfiguration(cfg => { cfg.CreateMap<AgentAddDto, Agent>(); });
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<AgentAddDto, Entities.Agent>();
+                cfg.CreateMap<IEnumerable<CpuMetricResponse>, IEnumerable<CpuMetric>>();
+                cfg.CreateMap<IEnumerable<HddMetricResponse>, IEnumerable<HddMetric>>();
+            });
 
             Mapper = config.CreateMapper();
         }

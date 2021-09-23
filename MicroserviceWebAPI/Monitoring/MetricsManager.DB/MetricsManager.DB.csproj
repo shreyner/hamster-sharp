@@ -28,4 +28,9 @@
       <ProjectReference Include="..\MetricsManager.Entities\MetricsManager.Entities.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="Migrations\20210921184140_Agent_add_enabled_flag.cs" />
+      <Compile Remove="Migrations\20210921184140_Agent_add_enabled_flag.Designer.cs" />
+    </ItemGroup>
+
 </Project>

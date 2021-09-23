@@ -11,9 +11,12 @@
 
     <ItemGroup>
       <PackageReference Include="AutoMapper" Version="10.1.1" />
+      <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+      <PackageReference Include="Quartz" Version="3.3.3" />
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Agent.Client\Agent.Client.csproj" />
       <ProjectReference Include="..\MetricsManager.DB\MetricsManager.DB.csproj" />
       <ProjectReference Include="..\MetricsManager.Entities\MetricsManager.Entities.csproj" />
     </ItemGroup>

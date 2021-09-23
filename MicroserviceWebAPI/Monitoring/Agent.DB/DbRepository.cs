@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -21,8 +22,11 @@ namespace Agent.DB
         /// <inheritdoc />
         public async Task AddAsync(TEntity entity)
         {
+            Console.WriteLine($"Call AddAsync for {nameof(entity)}");
             await _context.Set<TEntity>().AddAsync(entity);
+            Console.WriteLine($"AddAsync for {nameof(entity)}");
             await _context.SaveChangesAsync();
+            Console.WriteLine($"Save Changes for {nameof(entity)}");
         }
 
         /// <inheritdoc />

@@ -1,12 +1,9 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using MetricsManager.Entities;
-using MetricsManager.Service;
 using MetricsManager.Service.Dto;
 using MetricsManager.Service.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MetricsManager.Application.Controllers
@@ -16,13 +13,15 @@ namespace MetricsManager.Application.Controllers
     public class AgentsController : ControllerBase
     {
         [HttpGet]
-        public async Task<ActionResult<List<Action>>> GetAllAgents([FromServices] AgentService agentService)
+        public async Task<ActionResult<IEnumerable<Entities.Agent>>> GetAllAgents(
+            [FromServices] AgentService agentService
+        )
         {
             return Ok(await agentService.GetAll());
         }
 
         [HttpPost("registry")]
-        public async Task<ActionResult<Agent>> RegistryAgent(
+        public async Task<ActionResult<Entities.Agent>> RegistryAgent(
             [FromBody] AgentAddDto newAgent,
             [FromServices] AgentService agentService
         )
@@ -31,15 +30,39 @@ namespace MetricsManager.Application.Controllers
         }
 
         [HttpPut("{agentId}/enabled")]
-        public ActionResult EnabledAgentById([FromRoute] int agentId)
+        public async Task<ActionResult> EnabledAgentById(
+            [FromRoute] int agentId,
+            [FromServices] AgentService agentService
+        )
         {
-            return NoContent();
+            try
+            {
+                await agentService.AgentChangeEnabled(agentId, true);
+
+                return NoContent();
+            }
+            catch (InvalidOperationException e)
+            {
+                return new NotFoundResult();
+            }
         }
 
         [HttpPut("{agentId}/disabled")]
-        public ActionResult DisabledAgentById([FromRoute] int agentId)
+        public async Task<ActionResult> DisabledAgentById(
+            [FromRoute] int agentId,
+            [FromServices] AgentService agentService
+        )
         {
-            return NoContent();
+            try
+            {
+                await agentService.AgentChangeEnabled(agentId, false);
+
+                return NoContent();
+            }
+            catch (InvalidOperationException e)
+            {
+                return new NotFoundResult();
+            }
         }
     }
 }

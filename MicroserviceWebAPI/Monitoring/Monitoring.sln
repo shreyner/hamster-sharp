@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agent.Entities", "Agent.Ent
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetricsManager.Entities", "MetricsManager.Entities\MetricsManager.Entities.csproj", "{A7207343-4A64-4B84-9C81-59FB5110772B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agent.Client", "Agent.Client\Agent.Client.csproj", "{32E94D82-387B-4BD9-B9D4-875BDD8C8F8D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,5 +56,9 @@ Global
 		{A7207343-4A64-4B84-9C81-59FB5110772B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7207343-4A64-4B84-9C81-59FB5110772B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7207343-4A64-4B84-9C81-59FB5110772B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32E94D82-387B-4BD9-B9D4-875BDD8C8F8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32E94D82-387B-4BD9-B9D4-875BDD8C8F8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32E94D82-387B-4BD9-B9D4-875BDD8C8F8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32E94D82-387B-4BD9-B9D4-875BDD8C8F8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -6,7 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Quartz;
 using Quartz.Spi;
 
-namespace Agent.Service.Jobs
+namespace MetricsManager.Service.Jobs
 {
     public class QuartzHostedService : IHostedService
     {
@@ -35,14 +35,12 @@ namespace Agent.Service.Jobs
 
             foreach (var jobSchedule in _jobSchedules)
             {
-                Console.WriteLine("foreach (var jobSchedule in _jobSchedules)");
                 var job = CreateJobDetail(jobSchedule);
                 var trigger = CreateTrigger(jobSchedule);
 
                 await Scheduler.ScheduleJob(job, trigger, cancellationToken);
             }
 
-            Console.WriteLine("await Scheduler.Start(cancellationToken);");
             await Scheduler.Start(cancellationToken);
         }
 
