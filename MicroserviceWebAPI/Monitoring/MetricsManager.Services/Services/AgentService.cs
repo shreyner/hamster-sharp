@@ -13,25 +13,36 @@ namespace MetricsManager.Service.Services
 {
     public class AgentService
     {
-        private DbRepository<Agent> AgentRepository { get; set; }
+        private DbRepository<Entities.Agent> AgentRepository { get; set; }
         private IMetricsManagerMapper ManagerMapper { get; set; }
 
-        public AgentService(DbRepository<Agent> agentRepository, IMetricsManagerMapper mapper)
+        public AgentService(DbRepository<Entities.Agent> agentRepository, IMetricsManagerMapper mapper)
         {
             AgentRepository = agentRepository;
             ManagerMapper = mapper;
         }
 
-        public Task<List<Agent>> GetAll()
+        public Task<List<Entities.Agent>> GetAll()
         {
             return AgentRepository.GetAll().ToListAsync();
         }
 
-        public async Task<Agent> AddAgent(AgentAddDto agentAddDto)
+        public async Task<Entities.Agent> AddAgent(AgentAddDto agentAddDto)
         {
-            var agent = ManagerMapper.Map<Agent>(agentAddDto);
+            var agent = ManagerMapper.Map<Entities.Agent>(agentAddDto);
 
             await AgentRepository.AddAsync(agent);
+
+            return agent;
+        }
+
+        public async Task<Entities.Agent> AgentChangeEnabled(int agentId, bool enabled)
+        {
+            var agent = await AgentRepository.GetById(agentId);
+
+            agent.Enabled = enabled;
+            
+            await AgentRepository.UpdateAsync(agent);
 
             return agent;
         }

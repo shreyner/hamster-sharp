@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MetricsManager.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace MetricsManager.DB
 {
@@ -21,11 +23,24 @@ namespace MetricsManager.DB
         {
             return _context.Set<TEntity>().AsQueryable();
         }
+        
+        /// <inheritdoc />
+        public Task<TEntity> GetById(int id)
+        {
+            return _context.Set<TEntity>().Where(x => x.Id == id).SingleAsync();
+        }
 
         /// <inheritdoc />
         public async Task AddAsync(TEntity entity)
         {
             await _context.Set<TEntity>().AddAsync(entity);
+            await _context.SaveChangesAsync();
+        }
+
+        /// <inheritdoc />
+        public async Task AddRangeAsync(IEnumerable<TEntity> entities)
+        {
+            await _context.Set<TEntity>().AddRangeAsync(entities);
             await _context.SaveChangesAsync();
         }
 
