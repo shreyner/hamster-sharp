@@ -14,3 +14,4 @@ dotnet ef migrations add InitialCreate -p ../MetricsManager.DB
 ```shell
 dotnet ef database update
 ```
+
