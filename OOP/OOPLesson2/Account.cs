@@ -10,10 +10,10 @@ namespace OOPLesson2 {
 
     class Account
     {
-        static long LastNumber = 0;
-        private long Number = 0;
-        private AccountType Type = AccountType.Debit;
-        private decimal Amount = 0;
+        static long LastNumber  = 0;
+        public long Number {get;} = 0;
+        public AccountType Type {get; set;} = AccountType.Debit;
+        public decimal Amount {get; set;} = 0;
 
         public Account() {
             Number = Account.GenerateAccountNumber();
@@ -31,26 +31,6 @@ namespace OOPLesson2 {
 
         public Account(AccountType type, decimal amount) {
             Number = Account.GenerateAccountNumber();
-        }
-
-        public long GetNumber() {
-            return Number;
-        }
-
-        public AccountType GetAccountType() {
-            return Type;
-        }
-
-        public void SetAccountType(AccountType accountType) {
-            Type = accountType;
-        }
-
-        public decimal GetAmount() {
-            return Amount;
-        }
-
-        public void SetAmount(decimal amount) {
-            Amount = amount;
         }
 
         public override string ToString()
