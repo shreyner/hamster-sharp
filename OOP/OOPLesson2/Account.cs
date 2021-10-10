@@ -19,6 +19,20 @@ namespace OOPLesson2 {
             Number = Account.GenerateAccountNumber();
         }
 
+        public Account(AccountType type) {
+            Number = Account.GenerateAccountNumber();
+            Type = type;
+        }
+
+        public Account(decimal amount) {
+            Number = Account.GenerateAccountNumber();
+            Amount = amount;
+        }
+
+        public Account(AccountType type, decimal amount) {
+            Number = Account.GenerateAccountNumber();
+        }
+
         public long GetNumber() {
             return Number;
         }
