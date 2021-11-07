@@ -33,9 +33,14 @@ namespace OOPLesson2 {
             Number = Account.GenerateAccountNumber();
         }
 
+        public void Transfer(Account debitAccount, decimal amount) {
+            debitAccount.Amount -= amount;
+            Amount += amount;
+        }
+
         public override string ToString()
         {
-            return $"[{base.ToString()}]: Number: {Number}, AccountType: {Type}, Amount: {Amount}";
+            return $"Number: {Number}, AccountType: {Type}, Amount: {Amount}";
         }
 
         static public long GenerateAccountNumber() {
