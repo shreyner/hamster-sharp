@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOPLesson7.App", "OOPLesson7.App\OOPLesson7.App.csproj", "{7240C022-AC7E-4FC7-9238-144984A417AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOPLesson7.AppTests", "OOPLesson7.AppTests\OOPLesson7.AppTests.csproj", "{1D49AD55-8975-4B04-9166-77BC6585D6BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7240C022-AC7E-4FC7-9238-144984A417AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7240C022-AC7E-4FC7-9238-144984A417AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7240C022-AC7E-4FC7-9238-144984A417AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7240C022-AC7E-4FC7-9238-144984A417AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D49AD55-8975-4B04-9166-77BC6585D6BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D49AD55-8975-4B04-9166-77BC6585D6BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D49AD55-8975-4B04-9166-77BC6585D6BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D49AD55-8975-4B04-9166-77BC6585D6BD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

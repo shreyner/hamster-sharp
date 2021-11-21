@@ -1,0 +1,9 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">/Users/shreyner/Library/Caches/JetBrains/Rider2021.2/resharper-host/temp/Rider/vAny/CoverageData/_OOPLesson7.1788572203/Snapshot/snapshot.utdcvr</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d2ed78b2_002D89d7_002D47c4_002Daf09_002D0124594aee41/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ACoderUnitTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::1D49AD55-8975-4B04-9166-77BC6585D6BD::net5.0::OOPLesson7.AppTests.ACoderUnitTests&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::1D49AD55-8975-4B04-9166-77BC6585D6BD::net5.0::OOPLesson7.AppTests.BCoderUnitTests.Encode_FirstElementOfAlphabet_ReturnString&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::1D49AD55-8975-4B04-9166-77BC6585D6BD::net5.0::OOPLesson7.AppTests.BCoderUnitTests&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
