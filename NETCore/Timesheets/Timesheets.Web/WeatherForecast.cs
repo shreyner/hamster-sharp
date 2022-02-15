@@ -1,4 +1,4 @@
-namespace Application;
+namespace Timesheets.Web;
 
 public class WeatherForecast
 {
