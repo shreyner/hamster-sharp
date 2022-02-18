@@ -1,7 +1,10 @@
+using System.Configuration;
+using Microsoft.EntityFrameworkCore;
 using Timesheets.DB;
 using Timesheets.DB.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
+IConfiguration configuration = builder.Configuration;
 
 // Add services to the container.
 
@@ -9,7 +12,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<IRepository<PersonEntity>, PersonRepository>();
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(configuration.GetConnectionString("postgresDB")));
+
+builder.Services.AddScoped<IRepository<Employee>, Repository<Employee>>();
+builder.Services.AddScoped<IRepository<User>, Repository<User>>();
 
 var app = builder.Build();
 
@@ -27,5 +34,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
-// TODO
