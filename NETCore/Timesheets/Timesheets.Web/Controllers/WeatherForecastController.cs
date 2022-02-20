@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Application.Controllers;
+namespace Timesheets.Web.Controllers;
 
 [ApiController]
 [Route("[controller]")]
