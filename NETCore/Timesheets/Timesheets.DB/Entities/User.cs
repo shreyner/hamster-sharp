@@ -8,6 +8,10 @@ public class User : BaseEntity
     public string MiddleName { get; set; }
     public string LastName { get; set; }
     
+    public string Login { get; set; }
+    
+    public string Password { get; set; }
+
     [DefaultValue("")]
     public string Comment { get; set; }
     
